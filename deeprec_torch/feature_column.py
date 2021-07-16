@@ -65,7 +65,7 @@ class VarLenSparseFeat(namedtuple('VarLenSparseFeat',
     """
     __slots__ = ()
 
-    def __new__(cls, sparsefeat, maxlen, length_name, combiner='mean',
+    def __new__(cls, sparsefeat, maxlen, length_name=None, combiner='mean',
                 weight_name=None, weight_norm=True, *args, **kwargs):
 
         return super(VarLenSparseFeat, cls).__new__(cls, sparsefeat, maxlen, length_name,
@@ -100,6 +100,10 @@ class VarLenSparseFeat(namedtuple('VarLenSparseFeat',
         return self.sparsefeat.group_name
 
     @property
+    def weight(self):
+        return self.sparsefeat.weight
+
+    @property
     def freeze(self):
         return self.sparsefeat.freeze
 
@@ -130,8 +134,9 @@ def build_input_dict(feature_columns):
             start += fc.maxlen
 
             # 序列长度
-            input_dict[fc.length_name] = (start, start + 1)
-            start += 1
+            if fc.length_name is not None:
+                input_dict[fc.length_name] = (start, start + 1)
+                start += 1
 
             # 序列权重
             if fc.weight_name is not None:
