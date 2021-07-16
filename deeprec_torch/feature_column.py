@@ -107,6 +107,42 @@ class VarLenSparseFeat(namedtuple('VarLenSparseFeat',
         return self.name.__hash__()
 
 
+def build_input_dict(feature_columns):
+    """
+    基于feature_columns构建特征和模型输入tensor维度之间的对应关系
+
+    :param feature_columns: list 特征列
+    :return:
+        input_dict: dict 形如{feature_name: (idx: idx+dim)}
+    """
+    start = 0  # tensor起始维度
+    input_dict = OrderedDict()
+    for fc in feature_columns:
+        if isinstance(fc, DenseFeat):
+            input_dict[fc.name] = (start, start + fc.dimension)
+            start += fc.dimension
+        elif isinstance(fc, SparseFeat):
+            input_dict[fc.name] = (start, start + 1)
+            start += 1
+        elif isinstance(fc, VarLenSparseFeat):
+            # 序列
+            input_dict[fc.name] = (start, start + fc.maxlen)
+            start += fc.maxlen
+
+            # 序列长度
+            input_dict[fc.length_name] = (start, start + 1)
+            start += 1
+
+            # 序列权重
+            if fc.weight_name is not None:
+                input_dict[fc.weight_name] = (start, start + fc.maxlen)
+                start += fc.maxlen
+        else:
+            raise ValueError('Invalid type in feature columns.')
+
+    return input_dict
+
+
 if __name__ == '__main__':
     feat = DenseFeat('price', dimension=2)
     print(feat.name, feat.dtype, feat.dimension)

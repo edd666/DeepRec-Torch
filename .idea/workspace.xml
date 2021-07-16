@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f50d844-b2ad-4b76-a8f6-874e390309d6" name="Default Changelist" comment="" />
+    <list default="true" id="0f50d844-b2ad-4b76-a8f6-874e390309d6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/deeprec_torch/feature_column.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeprec_torch/feature_column.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deeprec_torch/utils/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeprec_torch/utils/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/develop.py" beforeDir="false" afterPath="$PROJECT_DIR$/develop.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,17 +17,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/develop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+            <state relative-caret-position="171">
+              <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deeprec_torch/utils/dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="113">
+              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
               <folding>
                 <element signature="e#261#279#0" expanded="true" />
               </folding>
@@ -31,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deeprec_torch/feature_column.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1164">
-              <caret line="106" column="35" selection-start-line="106" selection-start-column="35" selection-end-line="106" selection-end-column="35" />
+            <state relative-caret-position="940">
+              <caret line="128" column="45" selection-start-line="128" selection-start-column="45" selection-end-line="128" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -59,7 +63,6 @@
         <option value="$PROJECT_DIR$/deeprec/feature_column.py" />
         <option value="$PROJECT_DIR$/deeprec-torch/__init__.py" />
         <option value="$PROJECT_DIR$/deeprec-torch/inputs.py" />
-        <option value="$PROJECT_DIR$/develop.py" />
         <option value="$PROJECT_DIR$/deeprec-torch/utils/__init__.py" />
         <option value="$PROJECT_DIR$/deeprec-torch/models/__init__.py" />
         <option value="$PROJECT_DIR$/deeprec-torch/models/rank/__init__.py" />
@@ -67,6 +70,7 @@
         <option value="$PROJECT_DIR$/deeprec-torch/layers/__init__.py" />
         <option value="$PROJECT_DIR$/deeprec-torch/utils/dataset.py" />
         <option value="$PROJECT_DIR$/deeprec-torch/feature_column.py" />
+        <option value="$PROJECT_DIR$/develop.py" />
         <option value="$PROJECT_DIR$/deeprec_torch/feature_column.py" />
         <option value="$PROJECT_DIR$/deeprec_torch/utils/dataset.py" />
       </list>
@@ -114,6 +118,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -213,12 +218,12 @@
       <workItem from="1626229868645" duration="3681000" />
       <workItem from="1626316553271" duration="1394000" />
       <workItem from="1626331273915" duration="8171000" />
-      <workItem from="1626402905210" duration="8638000" />
+      <workItem from="1626402905210" duration="11974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42948000" />
+    <option name="totallyTimeSpent" value="46284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -249,7 +254,7 @@
       <window_info anchor="right" id="Database" order="5" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22460657" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22460657" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -333,25 +338,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/develop.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deeprec_torch/utils/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="e#261#279#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="171">
+          <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/deeprec_torch/feature_column.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1164">
-          <caret line="106" column="35" selection-start-line="106" selection-start-column="35" selection-end-line="106" selection-end-column="35" />
+        <state relative-caret-position="940">
+          <caret line="128" column="45" selection-start-line="128" selection-start-column="45" selection-end-line="128" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deeprec_torch/utils/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="e#261#279#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
