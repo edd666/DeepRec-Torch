@@ -33,7 +33,7 @@ class DenseFeat(namedtuple('DenseFeat',
 
 class SparseFeat(namedtuple('SparseFeat',
                             ['name', 'vocabulary_size', 'embedding_dim', 'use_hash',
-                             'dtype', 'embedding_name', 'group_name', 'freeze'])):
+                             'dtype', 'embedding_name', 'group_name', 'weight', 'freeze'])):
     """
     类别特征
     """
@@ -41,7 +41,7 @@ class SparseFeat(namedtuple('SparseFeat',
 
     def __new__(cls, name, vocabulary_size, embedding_dim=EMBEDDING_DIM,
                 use_hash=False, dtype='int32', embedding_name=None,
-                group_name=GROUP_NAME, freeze=False, *args, **kwargs):
+                group_name=GROUP_NAME, weight=None, freeze=False, *args, **kwargs):
 
         if embedding_dim == 'auto':
             embedding_dim = 6 * int(pow(vocabulary_size, 0.25))
@@ -51,7 +51,7 @@ class SparseFeat(namedtuple('SparseFeat',
 
         return super(SparseFeat, cls).__new__(cls, name, vocabulary_size, embedding_dim,
                                               use_hash, dtype, embedding_name, group_name,
-                                              freeze)
+                                              weight, freeze)
 
     def __hash__(self):
         return self.name.__hash__()
