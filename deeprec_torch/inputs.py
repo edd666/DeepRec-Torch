@@ -9,7 +9,3 @@
 """
 
 # packages
-
-
-def build_embedding_dict(feature_columns):
-    pass
