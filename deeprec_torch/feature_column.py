@@ -141,13 +141,3 @@ def build_input_dict(feature_columns):
             raise ValueError('Invalid type in feature columns.')
 
     return input_dict
-
-
-if __name__ == '__main__':
-    feat = DenseFeat('price', dimension=2)
-    print(feat.name, feat.dtype, feat.dimension)
-    sparse_feat = SparseFeat('age', 100)
-    print(sparse_feat)
-    varlen_sparse_feat = VarLenSparseFeat(SparseFeat('item_id', 10), maxlen=5)
-    print(varlen_sparse_feat)
-    pass
