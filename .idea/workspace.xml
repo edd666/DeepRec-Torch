@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f50d844-b2ad-4b76-a8f6-874e390309d6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/liaozhi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/liaozhi.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/feature_column.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeprec_torch/feature_column.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/develop.py" beforeDir="false" afterPath="$PROJECT_DIR$/develop.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +25,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/deeprec_torch/layers/sequence.py" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="JupyterTrust" id="1ec9794c-c16e-4034-a6fb-2e780f992b03" />
+  <component name="JupyterTrust" id="8226f84c-ac30-4962-86fc-22d285d8cf30" />
   <component name="ProjectId" id="1veNawX7xCFe1WO9tq1SToTm7Qj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -198,6 +197,8 @@
       <workItem from="1626955812691" duration="450000" />
       <workItem from="1626956330976" duration="9000" />
       <workItem from="1627002302762" duration="2528000" />
+      <workItem from="1627552282906" duration="4440000" />
+      <workItem from="1627608993875" duration="8980000" />
     </task>
     <servers />
   </component>
@@ -205,15 +206,19 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="224" y="80" key="SettingsEditor" timestamp="1627002692121">
+    <state x="224" y="80" key="SettingsEditor" timestamp="1627557254713">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="224" y="80" key="SettingsEditor/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1627002692121" />
+    <state x="224" y="80" key="SettingsEditor/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1627557254713" />
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1626951615210">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1626950818765" />
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1626951615210" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1627630080281">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1627630080281" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DeepRec_Torch$sequence.coverage" NAME="sequence Coverage Results" MODIFIED="1626835609364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/deeprec_torch/layers" />
