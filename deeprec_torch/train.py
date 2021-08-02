@@ -55,7 +55,7 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
 
             train_loss += loss
             if batch % 100 == 0:
-                print(f"loss: {loss.item():>8f},  batch: [{batch}/{num_batches}]")
+                print(f"loss: {loss.item():>8f}   [{batch}/{num_batches}]")
 
         train_loss /= num_batches
         print(f"Train: \n loss: {train_loss:>8f} \n")
@@ -85,7 +85,7 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
             if patience_ < patience:
                 patience_ += 1
             else:
-                print(f"valid loss is not decrease at epoch {epoch + 1} and training is break")
+                print(f"valid loss is not decrease at epoch {epoch + 1} and training stop")
                 break
 
     print('Done!')
