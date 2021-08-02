@@ -9,6 +9,9 @@
 """
 
 # packages
+import torch
+import random
+import numpy as np
 from deeprec_torch.feature_column import DenseFeat, SparseFeat, VarLenSparseFeat
 
 
@@ -51,3 +54,22 @@ def compute_input_dim(feature_columns, behavior_columns=None):
             raise ValueError('error in compute_input_dim')
 
     return input_dim
+
+
+def setup_seed(seed):
+    """
+    设置随机种子
+
+    :param seed: int 随机种子
+    :return:
+    """
+    random.seed(seed)
+    np.random.seed(seed)
+
+    # pytorch
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+
+    return

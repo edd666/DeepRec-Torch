@@ -6,6 +6,7 @@
       <w>dtype</w>
       <w>liaozhi</w>
       <w>maxlen</w>
+      <w>optim</w>
       <w>sparsefeat</w>
       <w>varlen</w>
     </words>
