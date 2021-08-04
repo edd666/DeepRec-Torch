@@ -28,25 +28,25 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
     """
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
-    print(f'Train on {device} \n')
+    print(f'Train on {device}\n')
 
     # early stop
     best_loss = 1000.0
 
     for epoch in range(epochs):
-        print(f"Epoch {epoch + 1}\n-------------------------------")
+        print(f"Epoch {epoch+1}\n-------------------------------")
 
         # train
         model.train()
-        train_loss = 0.0
         num_batches = len(train_dataloader)
+        train_loss = 0.0
         for x, y in tqdm(train_dataloader, total=num_batches):
             x, y = x.to(device), y.to(device)
 
             # Compute prediction and loss
             u_v, i_v = model(x)
-            pred = torch.sigmoid(torch.sum(u_v * i_v, dim=1))
-            loss = loss_fn(pred, y.float())
+            logits = torch.sum(u_v * i_v, dim=1)
+            loss = loss_fn(logits, y.float())
             train_loss += loss.item()
 
             # Backpropagation
@@ -55,23 +55,23 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
             optimizer.step()
 
         train_loss /= num_batches
-        print(f"Train: \n loss: {train_loss:>8f} \n")
+        print(f"Train: \n loss: {train_loss:>8f}")
 
         # eval
         model.eval()
         num_batches = len(valid_dataloader)
         valid_loss = 0.0
         with torch.no_grad():
-            for x, y in tqdm(valid_dataloader, total=num_batches):
+            for x, y in valid_dataloader:
                 x, y = x.to(device), y.to(device)
 
                 u_v, i_v = model(x)
-                pred = torch.sigmoid(torch.sum(u_v * i_v, dim=1))
+                logits = torch.sum(u_v * i_v, dim=1)
 
-                valid_loss += loss_fn(pred, y.float()).item()
+                valid_loss += loss_fn(logits, y.float()).item()
 
         valid_loss /= num_batches
-        print(f"Valid: \n loss: {valid_loss:>8f} \n")
+        print(f"Valid: \n loss: {valid_loss:>8f}")
 
         if valid_loss < best_loss:
             best_loss = valid_loss
@@ -82,5 +82,5 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
             break
 
     print('Done!')
-    
+
     return

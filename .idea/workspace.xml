@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f50d844-b2ad-4b76-a8f6-874e390309d6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/liaozhi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/liaozhi.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deeprec_torch/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeprec_torch/train.py" afterDir="false" />
     </list>
@@ -207,7 +208,9 @@
       <workItem from="1627991078494" duration="28000" />
       <workItem from="1627991762282" duration="2000" />
       <workItem from="1628002104416" duration="32000" />
-      <workItem from="1628042337193" duration="3138000" />
+      <workItem from="1628042337193" duration="3378000" />
+      <workItem from="1628050398919" duration="2382000" />
+      <workItem from="1628065925229" duration="3478000" />
     </task>
     <servers />
   </component>
@@ -215,10 +218,18 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-181" y="-1080" width="1883" height="1080" key="DiffContextDialog" timestamp="1628069152618">
+      <screen x="-184" y="-1080" width="1920" height="1080" />
+    </state>
+    <state x="-181" y="-1080" width="1883" height="1080" key="DiffContextDialog/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1628069152618" />
     <state x="224" y="80" key="SettingsEditor" timestamp="1627962198785">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="224" y="80" key="SettingsEditor/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1627962198785" />
+    <state x="520" y="191" key="VcsDiffUtil.ChangesDialog" timestamp="1628068802522">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="520" y="191" key="VcsDiffUtil.ChangesDialog/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1628068802522" />
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1626951615210">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
