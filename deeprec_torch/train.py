@@ -10,9 +10,10 @@
 
 # packages
 import torch
+from tqdm import tqdm
 
 
-def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, epochs=5, patience=2):
+def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, epochs=5):
     """
     Pytorch模型的训练代码
 
@@ -23,7 +24,6 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
     :param optimizer: torch.optim 优化器
     :param path: str 模型保存路径
     :param epochs: int 训练次数
-    :param patience: int early stop param
     :return:
     """
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -31,31 +31,28 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
     print(f'Train on {device} \n')
 
     # early stop
-    patience_, best_loss = 0, 1000.0
+    best_loss = 1000.0
 
     for epoch in range(epochs):
         print(f"Epoch {epoch + 1}\n-------------------------------")
 
         # train
         model.train()
-        num_batches = len(train_dataloader)
         train_loss = 0.0
-        for batch, (x, y) in enumerate(train_dataloader, 1):
+        num_batches = len(train_dataloader)
+        for x, y in tqdm(train_dataloader, total=num_batches):
             x, y = x.to(device), y.to(device)
 
             # Compute prediction and loss
             u_v, i_v = model(x)
             pred = torch.sigmoid(torch.sum(u_v * i_v, dim=1))
             loss = loss_fn(pred, y.float())
+            train_loss += loss.item()
 
             # Backpropagation
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-
-            train_loss += loss
-            if batch % 100 == 0:
-                print(f"loss: {loss.item():>8f}   [{batch}/{num_batches}]")
 
         train_loss /= num_batches
         print(f"Train: \n loss: {train_loss:>8f} \n")
@@ -65,7 +62,7 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
         num_batches = len(valid_dataloader)
         valid_loss = 0.0
         with torch.no_grad():
-            for x, y in valid_dataloader:
+            for x, y in tqdm(valid_dataloader, total=num_batches):
                 x, y = x.to(device), y.to(device)
 
                 u_v, i_v = model(x)
@@ -76,18 +73,14 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
         valid_loss /= num_batches
         print(f"Valid: \n loss: {valid_loss:>8f} \n")
 
-        # early stop
         if valid_loss < best_loss:
-            # save best model
             best_loss = valid_loss
             torch.save(model.state_dict(), path)
+            print(f"Model save to: {path}")
         else:
-            if patience_ < patience:
-                patience_ += 1
-            else:
-                print(f"valid loss is not decrease at epoch {epoch + 1} and training stop")
-                break
+            print('Valid loss is not decrease in 1 epoch and break train')
+            break
 
     print('Done!')
-
+    
     return

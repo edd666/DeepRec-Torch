@@ -24,7 +24,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/deeprec_torch/layers/sequence.py" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="JupyterTrust" id="090a84aa-1484-4f1e-a06c-c4f0856d98c1" />
+  <component name="JupyterTrust" id="6f7f498f-06ee-455e-9132-5471cd20c652" />
   <component name="ProjectId" id="1veNawX7xCFe1WO9tq1SToTm7Qj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -201,7 +201,13 @@
       <workItem from="1627608993875" duration="13194000" />
       <workItem from="1627639379679" duration="365000" />
       <workItem from="1627645465589" duration="1456000" />
-      <workItem from="1627869025376" duration="5923000" />
+      <workItem from="1627869025376" duration="6212000" />
+      <workItem from="1627961305248" duration="9000" />
+      <workItem from="1627962173157" duration="28000" />
+      <workItem from="1627991078494" duration="28000" />
+      <workItem from="1627991762282" duration="2000" />
+      <workItem from="1628002104416" duration="32000" />
+      <workItem from="1628042337193" duration="3138000" />
     </task>
     <servers />
   </component>
@@ -209,10 +215,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="224" y="80" key="SettingsEditor" timestamp="1627557254713">
+    <state x="224" y="80" key="SettingsEditor" timestamp="1627962198785">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="224" y="80" key="SettingsEditor/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1627557254713" />
+    <state x="224" y="80" key="SettingsEditor/0.0.1440.900/-184.-1080.1920.1080@0.0.1440.900" timestamp="1627962198785" />
     <state x="399" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1626951615210">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
