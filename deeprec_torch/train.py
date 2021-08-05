@@ -29,7 +29,7 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
     """
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = model.to(device)
-    print(f'Train on {device}\n')
+    print(f'Device: {device}\n')
 
     # early stop
     best_loss = 1000.0
@@ -59,7 +59,7 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
                 optimizer.step()
 
                 t.set_postfix_str(f"{time.time() - start:.4f}s {int((time.time() - start) / step * 1000)}ms/step"
-                                  f" - loss: {loss.item():.6f} ")
+                                  f" - loss: {loss.item():.6f}")
 
         train_loss /= num_steps
 
@@ -79,16 +79,16 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
         valid_loss /= num_steps
 
         # metric
-        print(f"train_loss={train_loss:.6f}, "
+        print(f"train_loss={train_loss:.6f} \n"
               f"valid_loss={valid_loss:.6f}")
 
         # callback
         if valid_loss < best_loss:
             best_loss = valid_loss
             torch.save(model.state_dict(), path)
-            print(f"Model save to: {path}")
+            print(f"model save to: {path}")
         else:
-            print('Valid loss is not decrease in 1 epoch and break train')
+            print('valid loss is not decrease in 1 epoch and break train')
             break
 
     print('Done!')
