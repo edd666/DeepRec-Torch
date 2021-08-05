@@ -86,9 +86,9 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
         if valid_loss < best_loss:
             best_loss = valid_loss
             torch.save(model.state_dict(), path)
-            print(f"model save to: {path}")
+            print(f"Model save to: {path}")
         else:
-            print('valid loss is not decrease in 1 epoch and break train')
+            print('Valid loss is not decrease in 1 epoch and break train')
             break
 
     print('Done!')
