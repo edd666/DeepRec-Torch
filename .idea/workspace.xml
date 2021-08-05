@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f50d844-b2ad-4b76-a8f6-874e390309d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/liaozhi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/liaozhi.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/deeprec_torch/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeprec_torch/train.py" afterDir="false" />
     </list>
@@ -25,7 +24,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/deeprec_torch/layers/sequence.py" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="JupyterTrust" id="6f7f498f-06ee-455e-9132-5471cd20c652" />
+  <component name="JupyterTrust" id="cccf1208-94c4-45f3-a96e-16fac697e0cf" />
   <component name="ProjectId" id="1veNawX7xCFe1WO9tq1SToTm7Qj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -210,7 +209,9 @@
       <workItem from="1628002104416" duration="32000" />
       <workItem from="1628042337193" duration="3378000" />
       <workItem from="1628050398919" duration="2382000" />
-      <workItem from="1628065925229" duration="3478000" />
+      <workItem from="1628065925229" duration="3671000" />
+      <workItem from="1628071486198" duration="1000" />
+      <workItem from="1628125927619" duration="3741000" />
     </task>
     <servers />
   </component>

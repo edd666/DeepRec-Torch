@@ -5,10 +5,11 @@
 
 
 """
-    Model Train
+    模型训练代码
 """
 
 # packages
+import time
 import torch
 from tqdm import tqdm
 
@@ -34,32 +35,37 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
     best_loss = 1000.0
 
     for epoch in range(epochs):
-        print(f"Epoch {epoch+1}\n-------------------------------")
+        print(f"Epoch {epoch + 1}\n---------------------------------------")
 
         # train
         model.train()
-        num_batches = len(train_dataloader)
         train_loss = 0.0
-        for x, y in tqdm(train_dataloader, total=num_batches):
-            x, y = x.to(device), y.to(device)
+        num_steps = len(train_dataloader)
+        start = time.time()
+        with tqdm(enumerate(train_dataloader, 1), total=num_steps,
+                  bar_format='{desc} {n_fmt:>4s}/{total_fmt:<4s} |{bar}| {postfix}') as t:
+            for step, (x, y) in t:
+                x, y = x.to(device), y.to(device)
 
-            # Compute prediction and loss
-            u_v, i_v = model(x)
-            logits = torch.sum(u_v * i_v, dim=1)
-            loss = loss_fn(logits, y.float())
-            train_loss += loss.item()
+                # Compute prediction and loss
+                u_v, i_v = model(x)
+                logits = torch.sum(u_v * i_v, dim=1)
+                loss = loss_fn(logits, y.float())
+                train_loss += loss.item()
 
-            # Backpropagation
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+                # Backpropagation
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
 
-        train_loss /= num_batches
-        print(f"Train: \n loss: {train_loss:>8f}")
+                t.set_postfix_str(f"{time.time() - start:.4f}s {int((time.time() - start) / step * 1000)}ms/step"
+                                  f" - loss: {loss.item():.6f} ")
+
+        train_loss /= num_steps
 
         # eval
         model.eval()
-        num_batches = len(valid_dataloader)
+        num_steps = len(valid_dataloader)
         valid_loss = 0.0
         with torch.no_grad():
             for x, y in valid_dataloader:
@@ -70,9 +76,13 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
 
                 valid_loss += loss_fn(logits, y.float()).item()
 
-        valid_loss /= num_batches
-        print(f"Valid: \n loss: {valid_loss:>8f}")
+        valid_loss /= num_steps
 
+        # metric
+        print(f"train_loss={train_loss:.6f}, "
+              f"valid_loss={valid_loss:.6f}")
+
+        # callback
         if valid_loss < best_loss:
             best_loss = valid_loss
             torch.save(model.state_dict(), path)
@@ -82,5 +92,5 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, e
             break
 
     print('Done!')
-
     return
+
