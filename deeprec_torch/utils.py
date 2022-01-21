@@ -36,8 +36,8 @@ def setup_seed(seed):
 
 class CustomDataset(Dataset):
     def __init__(self, df):
-        self.x = {name: np.array(values.tolist(), dtype=values.dtype if values.dtype != 'object' else None) for
-                  name, values in df.items() if name != 'label'}
+        self.x = {name: np.array(values.tolist(), dtype=values.dtype if values.dtype != 'object' else None)
+                  for name, values in df.items() if name != 'label'}
         self.y = np.array(df['label'].tolist(), dtype=df['label'].dtype)
         self.size = len(df)
 

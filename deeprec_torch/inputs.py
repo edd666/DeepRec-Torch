@@ -55,9 +55,10 @@ def get_dense_value(x, feature_columns):
     """
     # 1,获取DenseFeat
     dense_value_list = list()
-    dense_feature_columns = list(filter(lambda f: isinstance(f, DenseFeat), feature_columns))
+    dense_feature_columns = list(filter(
+        lambda f: isinstance(f, DenseFeat), feature_columns))
     for fc in dense_feature_columns:
-        dense_value_list.append(x[fc.name].reshape((-1, 1)).float())
+        dense_value_list.append(x[fc.name].reshape((-1, 1)).float())  # torch.float32
 
     return dense_value_list
 
@@ -79,7 +80,7 @@ def embedding_lookup(x, embedding_dict, query_feature_columns, to_list=False):
         if fc.use_hash:
             raise ValueError('hash embedding lookup has not yet been implemented.')
         else:
-            lookup_idx = x[feature_name].long()
+            lookup_idx = x[feature_name].long()  # torch.int64
 
         query_embedding_dict[feature_name] = embedding_dict[embedding_name](lookup_idx)
 
@@ -117,7 +118,14 @@ def get_varlen_pooling_list(x, embedding_dict, varlen_sparse_feature_columns):
 
 
 def input_from_feature_columns(x, feature_columns, embedding_dict):
+    """
+    输入层
 
+    :param x: dict 输入
+    :param feature_columns: list 特征列
+    :param embedding_dict: embedding字典,形如{embedding_name: embedding_table}
+    :return:
+    """
     # 1,划分特征类型
     dense_feature_columns = list(filter(
         lambda f: isinstance(f, DenseFeat), feature_columns))
@@ -132,3 +140,5 @@ def input_from_feature_columns(x, feature_columns, embedding_dict):
     varlen_sparse_embedding_list = get_varlen_pooling_list(x, embedding_dict, varlen_sparse_feature_columns)
 
     return sparse_embedding_list + varlen_sparse_embedding_list, dense_value_list
+
+
