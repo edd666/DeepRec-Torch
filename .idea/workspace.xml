@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd850f4-c2b9-4077-810b-c90039b86468" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DeepRec-Torch.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DeepRec-Torch.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/liaozhi.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fileTemplates/internal/Python Script.py" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/Python Script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/feature_column.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/inputs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/layers/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/layers/sequence.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/models/match/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/models/match/dssm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/models/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/train.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/utils/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/utils/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/utils/utils.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +105,8 @@
       <option name="presentableId" value="Default" />
       <updated>1642594631731</updated>
       <workItem from="1642594639083" duration="1444000" />
-      <workItem from="1642642597651" duration="13718000" />
+      <workItem from="1642642597651" duration="14035000" />
+      <workItem from="1642678293534" duration="257000" />
     </task>
     <servers />
   </component>
