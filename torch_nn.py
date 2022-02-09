@@ -52,13 +52,13 @@ class SparseFeat(namedtuple('SparseFeat',
 
 
 class VarLenSparseFeat(namedtuple('VarLenSparseFeat',
-                                  ['sparsefeat', 'maxlen', 'length_name',
-                                   'combiner', 'weight_name', 'weight_norm'])):
+                                  ['sparsefeat', 'length_name', 'combiner',
+                                   'weight_name', 'weight_norm'])):
     __slots__ = ()
 
-    def __new__(cls, sparsefeat, maxlen, length_name, combiner='mean',
+    def __new__(cls, sparsefeat, length_name, combiner='mean',
                 weight_name=None, weight_norm=False):
-        return super(VarLenSparseFeat, cls).__new__(cls, sparsefeat, maxlen, length_name,
+        return super(VarLenSparseFeat, cls).__new__(cls, sparsefeat, length_name,
                                                     combiner, weight_name, weight_norm)
 
     @property

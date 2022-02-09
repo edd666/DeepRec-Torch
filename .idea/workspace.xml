@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2dd850f4-c2b9-4077-810b-c90039b86468" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torch_nn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_nn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +122,7 @@
       <workItem from="1643035189755" duration="667000" />
       <workItem from="1643080312173" duration="1498000" />
       <workItem from="1643083758227" duration="69000" />
+      <workItem from="1644379113233" duration="590000" />
     </task>
     <servers />
   </component>
