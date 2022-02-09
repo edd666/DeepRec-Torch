@@ -100,8 +100,10 @@ class VarLenSparseFeat(namedtuple('VarLenSparseFeat',
 def build_embedding_dict(feature_columns):
     """
     基于特征列(feature_columns)构建Embedding字典
-     注意:
+
+    注意:
         1,fc.weight(预训练Embedding)若不为None,必须为Tensor.
+
     :param feature_columns: list 特征列
     :return:
         embedding_dict: ModuleDict,形如{embedding_name: embedding_table}
@@ -127,6 +129,7 @@ def build_embedding_dict(feature_columns):
 def get_dense_value(x, feature_columns):
     """
     获取数值输入
+
     :param x: dict 输入
     :param feature_columns: list 特征列
     :return:
@@ -145,6 +148,7 @@ def get_dense_value(x, feature_columns):
 def embedding_lookup(x, embedding_dict, query_feature_columns, to_list=False):
     """
     embedding查询
+
     :param x: dict 输入
     :param embedding_dict: embedding字典,形如{embedding_name: embedding_table}
     :param query_feature_columns: list 待查询的特征列
@@ -206,6 +210,7 @@ class SequencePoolingLayer(nn.Module):
 def get_varlen_pooling_list(x, embedding_dict, varlen_sparse_feature_columns):
     """
     对序列特征(VarLenSparseFeat)进行Pooling操作
+
     :param x: dict 输入
     :param embedding_dict: embedding字典,形如{embedding_name: embedding_table}
     :param varlen_sparse_feature_columns: list 序列特征
@@ -232,6 +237,7 @@ def get_varlen_pooling_list(x, embedding_dict, varlen_sparse_feature_columns):
 def input_from_feature_columns(x, feature_columns, embedding_dict):
     """
     输入层
+
     :param x: dict 输入
     :param feature_columns: list 特征列
     :param embedding_dict: embedding字典,形如{embedding_name: embedding_table}
