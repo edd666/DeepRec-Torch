@@ -52,7 +52,7 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, d
 
     # 2,训练超参
     flag = False
-    interval = 2000
+    interval = 1000
     last_improve = 0
     require_improvement = 4000
     best_auc = float('-inf')
@@ -64,14 +64,11 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, d
     for epoch in range(epochs):
 
         for x, y in train_dataloader:
-            x, y = {n: v.to(device) for n, v in x.items()}, y.to(device)
+            x, y = {n: v.to(device) for n, v in x.items()}, y.to(device).float()
 
             # Compute prediction and loss
-            logit, afn_logit, dnn_logit = model(x)
-            logit, afn_logit, dnn_logit = logit.reshape(-1), afn_logit.reshape(-1), dnn_logit.reshape(-1)
-            loss = loss_fn(logit, y.float())
-            loss += loss_fn(afn_logit, y.float())
-            loss += loss_fn(dnn_logit, y.float())
+            logit = model(x).reshape(-1).float()
+            loss = loss_fn(logit, y)
 
             # Backpropagation
             optimizer.zero_grad()
@@ -81,8 +78,8 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, d
             # 每隔interval个batch评估下验证集
             if total_batch % interval == 0:
                 # train set
-                prob = torch.sigmoid(logit.detach()).cpu().tolist()
-                auc = roc_auc_score(y.detach().cpu().tolist(), prob)
+                pred = torch.sigmoid(logit.detach()).cpu().numpy()
+                auc = roc_auc_score(y.detach().cpu().numpy(), pred)
 
                 # valid set
                 valid_loss, valid_auc = evaluate(model, valid_dataloader, loss_fn, device)
@@ -123,28 +120,37 @@ def evaluate(model, dataloader, loss_fn, device):
     # 1,参数
     loss = 0
     total_batch = 0
-    true_list = []
-    prob_list = []
+    y_true = []
+    y_pred = []
 
     # 2,模型评估
     model.eval()
     with torch.no_grad():
         for x, y in dataloader:
-            x, y = {n: v.to(device) for n, v in x.items()}, y.to(device)
+            x, y = {n: v.to(device) for n, v in x.items()}, y.to(device).float()
 
             # loss
-            logit, _, _ = model(x)
-            logit = logit.reshape(-1)
-            loss += loss_fn(logit, y.float()).item()
+            logit = model(x).reshape(-1).float()
+            loss += loss_fn(logit, y).item()
 
             # auc
-            prob = torch.sigmoid(logit).cpu().tolist()
-            true_list.extend(y.cpu().tolist())
-            prob_list.extend(prob)
+            y_true.extend(y.cpu().numpy())
+            y_pred.extend(torch.sigmoid(logit).cpu().numpy())
 
             total_batch += 1
 
     loss /= total_batch
-    auc = roc_auc_score(true_list, prob_list)
+    auc = roc_auc_score(y_true, y_pred)
 
     return loss, auc
+
+
+def predict(model, dataloader, device):
+    y_pred = list()
+    model.eval()
+    with torch.no_grad():
+        for x, _ in dataloader:
+            x = {n: v.to(device) for n, v in x.items()}
+            y_pred.extend(torch.sigmoid(model(x).reshape(-1).float()).cpu().numpy())
+
+    return y_pred
