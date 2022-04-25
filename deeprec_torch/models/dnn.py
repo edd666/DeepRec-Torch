@@ -27,11 +27,7 @@ class DNN(nn.Module):
             else:
                 in_dim += fc.embedding_dim
         self.dnn = nn.Sequential(
-            nn.Linear(in_dim, 512),
-            nn.BatchNorm1d(512),
-            nn.Tanh(),
-
-            nn.Linear(512, 256),
+            nn.Linear(in_dim, 256),
             nn.BatchNorm1d(256),
             nn.Tanh(),
 
@@ -43,12 +39,16 @@ class DNN(nn.Module):
             nn.BatchNorm1d(64),
             nn.Tanh(),
 
-            nn.Linear(64, 1)
+            nn.Linear(64, 32),
+            nn.BatchNorm1d(32),
+            nn.Tanh(),
+
+            nn.Linear(32, 1)
         )
 
     def forward(self, x):
-        sparse_embedding_list, dense_value_list = input_from_feature_columns(
-            x, self.feature_columns, self.embedding_dict)
+        sparse_embedding_list, dense_value_list = input_from_feature_columns(x, self.feature_columns,
+                                                                             self.embedding_dict)
         dnn_in = torch.cat(sparse_embedding_list + dense_value_list, dim=-1)
         logit = self.dnn(dnn_in)
 

@@ -140,7 +140,7 @@ def get_dense_value(x, feature_columns):
     dense_feature_columns = list(filter(
         lambda f: isinstance(f, DenseFeat), feature_columns))
     for fc in dense_feature_columns:
-        dense_value_list.append(x[fc.name].reshape((-1, 1)).float())  # torch.float32
+        dense_value_list.append(x[fc.name].reshape((-1, 1)))  # torch.float32
 
     return dense_value_list
 
@@ -162,7 +162,7 @@ def embedding_lookup(x, embedding_dict, query_feature_columns, to_list=False):
         if fc.use_hash:
             raise ValueError('hash embedding lookup has not yet been implemented.')
         else:
-            lookup_idx = x[feature_name].long()  # torch.int64
+            lookup_idx = x[feature_name]  # torch.int64
 
         query_embedding_dict[feature_name] = embedding_dict[embedding_name](lookup_idx)
 
@@ -225,8 +225,8 @@ def get_varlen_pooling_list(x, embedding_dict, varlen_sparse_feature_columns):
             # weighted pooling
             raise ValueError('pooling with weight has not yet been implemented.')
         else:
-            seq_value = embedding_dict[embedding_name](x[feature_name].long())
-            seq_len = x[fc.length_name].reshape((-1, 1)).float()
+            seq_value = embedding_dict[embedding_name](x[feature_name])  # float32(int64)
+            seq_len = x[fc.length_name].reshape((-1, 1))  # float32
             pooling_value = SequencePoolingLayer(mode=fc.combiner)([seq_value, seq_len])
 
         pooling_value_list.append(pooling_value)

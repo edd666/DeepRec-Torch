@@ -12,7 +12,9 @@
 import time
 import torch
 import datetime
+import numpy as np
 from torch import nn
+from torch.utils.data import Dataset
 from sklearn.metrics import roc_auc_score
 
 
@@ -45,16 +47,54 @@ def get_time_dif(start_time):
     return datetime.timedelta(seconds=int(round(time_dif)))
 
 
+class CustomDataset(Dataset):
+    """
+    【data_dict】
+        Dense: float32
+        Sparse: int64
+        Varlen_Sparse: int64
+
+    【label】
+        label: float32
+    """
+    def __init__(self, df, dense_feature_columns, sparse_feature_columns, varlen_sparse_feature_columns=None):
+        self.dense_feature_columns = dense_feature_columns
+        self.sparse_feature_columns = sparse_feature_columns
+        self.varlen_sparse_feature_columns = varlen_sparse_feature_columns
+        self.data_len = len(df)
+        self.data = {col: df[col].values for col in dense_feature_columns + sparse_feature_columns}
+        if self.varlen_sparse_feature_columns:
+            for col in self.varlen_sparse_feature_columns:
+                self.data[col] = np.vstack(df[col].values)
+        self.label = df['label'].values
+
+    def __len__(self):
+
+        return self.data_len
+
+    def __getitem__(self, idx):
+        data_dict = dict()
+        for col in self.dense_feature_columns:
+            data_dict[col] = torch.tensor(self.data[col][idx]).float()  # float32
+        for col in self.sparse_feature_columns:
+            data_dict[col] = torch.tensor(self.data[col][idx]).long()  # int64
+        if self.varlen_sparse_feature_columns:
+            for col in self.varlen_sparse_feature_columns:
+                data_dict[col] = torch.tensor(self.data[col][idx, :]).long()  # int64
+
+        return data_dict, torch.tensor(self.label[idx]).float()
+
+
 def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, device='cpu', epochs=5):
     # 1,模型
     model = model.to(device)
     print(f'Train on: {device}\n')
 
-    # 2,训练超参
+    # 2,训练参数
     flag = False
-    interval = 1000
     last_improve = 0
-    require_improvement = 4000
+    interval = 1000
+    require_improvement = 2 * interval
     best_auc = float('-inf')
 
     # 3,训练
@@ -64,10 +104,10 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, d
     for epoch in range(epochs):
 
         for x, y in train_dataloader:
-            x, y = {n: v.to(device) for n, v in x.items()}, y.to(device).float()
+            x, y = {n: v.to(device) for n, v in x.items()}, y.to(device)
 
             # Compute prediction and loss
-            logit = model(x).reshape(-1).float()
+            logit = model(x).reshape(-1)
             loss = loss_fn(logit, y)
 
             # Backpropagation
@@ -77,11 +117,12 @@ def train(model, train_dataloader, valid_dataloader, loss_fn, optimizer, path, d
 
             # 每隔interval个batch评估下验证集
             if total_batch % interval == 0:
-                # train set
+
+                # train
                 pred = torch.sigmoid(logit.detach()).cpu().numpy()
                 auc = roc_auc_score(y.detach().cpu().numpy(), pred)
 
-                # valid set
+                # valid
                 valid_loss, valid_auc = evaluate(model, valid_dataloader, loss_fn, device)
 
                 if valid_auc > best_auc:
@@ -127,10 +168,10 @@ def evaluate(model, dataloader, loss_fn, device):
     model.eval()
     with torch.no_grad():
         for x, y in dataloader:
-            x, y = {n: v.to(device) for n, v in x.items()}, y.to(device).float()
+            x, y = {n: v.to(device) for n, v in x.items()}, y.to(device)
 
             # loss
-            logit = model(x).reshape(-1).float()
+            logit = model(x).reshape(-1)
             loss += loss_fn(logit, y).item()
 
             # auc
@@ -151,6 +192,6 @@ def predict(model, dataloader, device):
     with torch.no_grad():
         for x, _ in dataloader:
             x = {n: v.to(device) for n, v in x.items()}
-            y_pred.extend(torch.sigmoid(model(x).reshape(-1).float()).cpu().numpy())
+            y_pred.extend(torch.sigmoid(model(x).reshape(-1)).cpu().numpy())
 
     return y_pred
