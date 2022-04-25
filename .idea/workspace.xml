@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2dd850f4-c2b9-4077-810b-c90039b86468" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/models/dnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeprec_torch/models/dnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deeprec_torch/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/deeprec_torch/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torch_nn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_nn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_eval.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_eval.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +125,7 @@
       <workItem from="1644394470684" duration="1038000" />
       <workItem from="1650781740317" duration="6792000" />
       <workItem from="1650857001694" duration="1255000" />
-      <workItem from="1650865418321" duration="9278000" />
+      <workItem from="1650865418321" duration="11396000" />
     </task>
     <servers />
   </component>
