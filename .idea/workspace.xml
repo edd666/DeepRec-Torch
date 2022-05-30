@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dd850f4-c2b9-4077-810b-c90039b86468" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/nn_torch/torch_nn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torch_nn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_eval_pred.py" beforeDir="false" afterPath="$PROJECT_DIR$/nn_torch/train_eval_pred.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +50,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/nn_torch" />
+      <recent name="$PROJECT_DIR$/torch" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -125,7 +130,10 @@
       <workItem from="1644394470684" duration="1038000" />
       <workItem from="1650781740317" duration="6792000" />
       <workItem from="1650857001694" duration="1255000" />
-      <workItem from="1650865418321" duration="11396000" />
+      <workItem from="1650865418321" duration="12370000" />
+      <workItem from="1652098733138" duration="1267000" />
+      <workItem from="1652151329424" duration="127000" />
+      <workItem from="1653902767390" duration="315000" />
     </task>
     <servers />
   </component>
